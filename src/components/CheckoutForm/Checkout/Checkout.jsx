@@ -33,7 +33,7 @@ const Checkout =({cart})=>{
     }
 
     const Confirmation =()=>(
-        <div>
+        <div styles={{color:"black"}}>
             Confirmation
         </div>
     )
