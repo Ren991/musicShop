@@ -7,12 +7,36 @@ import { BrowserRouter ,Switch, Route, Navigate } from 'react-router-dom';
 
 const App = () => {
     const [products, setProducts] = useState([]);
+   
     const [cart, setCart] = useState({});
-
+    const [category, setCategory] = useState();     
+        console.log(category)
+    //console.log(products[0]?.categories[0].name)
+   /*  const productoFiltrado = products.filter(product => {
+        return product.categories[0]?.name.includes(category);
+      });
+      console.log(productoFiltrado) */
     const fetchProducts = async () => {
         const { data } = await commerce.products.list();
-        setProducts(data);
+        //if ( products === ""){setProducts(data)}
+        if(products === "" || products === undefined && category === "" ||category === undefined){
+            setProducts(data)
+        }else{ 
+        setProducts(data.filter(product => {
+            return product.categories[0].name.includes(category);
+          }))
+        }
+        if (category !== undefined || category !== ""){
+            if( category === "allCategories"){
+                setProducts(data)
+            }
+            
+              
+        }
+        console.log(products)
+        
     }
+   
     const fetchCart = async () => {
 
         setCart(await commerce.cart.retrieve())
@@ -35,18 +59,36 @@ const App = () => {
          
         setCart(await commerce.cart.empty())
     }
+    
+    
+    
 
     useEffect(() => { // component did mount
         fetchProducts();
         fetchCart()
-    }, [])
+        
+    }, [category])
     console.log(products)
     console.log(cart)
     return (
 
         <BrowserRouter>
+        
             <div>
+            
             <Navbar totalItems={cart?.total_items} />
+          
+                    
+                    <select style={{paddingTop:"100px"}} id="fruits" value={category} 
+                    defaultValue="selectOption"
+              onChange={(e) => setCategory(e.target.value)}>
+                <option value="selectOption" disabled>Search by category</option>
+                <option value="allCategories">All Categories</option>
+        <option value="guitars">Guitars</option>
+        <option value="bass">Basses</option>
+        <option value="keyboard">Keyboards</option>
+      </select>
+           
                 <Switch>
                    
                     <Route exact path="/">
