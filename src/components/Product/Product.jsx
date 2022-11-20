@@ -2,12 +2,15 @@ import React from 'react';
 import {Card,CardMedia,CardContent,CardActions,Typography,IconButton} from '@material-ui/core';
 import {AddShoppingCart} from '@material-ui/icons'
 import useStyles from './styles'
+import { Link as LinkRouter, useHistory } from 'react-router-dom'
 
 import './styles.css'
 
 const Product =({product,onAddToCart})=>{
     const classes = useStyles();
     
+
+   
     return(
       /*  <Card className={classes.root}>
             <CardMedia className={classes.media} image={product?.image.url} title={product.name} />
@@ -34,7 +37,10 @@ const Product =({product,onAddToCart})=>{
       <div className="col-md-3">
         <div className="wsk-cp-product">
           <div className="wsk-cp-img">
-            <img src={product?.image.url} alt="Product" className="img-responsive" />
+            <LinkRouter to={`/productDetail/${product?.id}` } >
+            <img  src={product?.image.url} alt="Product" className="img-responsive" />
+            </LinkRouter>
+            
           </div>
           <div className="wsk-cp-text">
             <div className="category">
