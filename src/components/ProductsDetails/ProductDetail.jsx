@@ -1,58 +1,74 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-//import "./style.css"
-import { Typography,Button } from "@material-ui/core";
+
+import {Card,CardMedia,CardContent,CardActions,Typography,IconButton} from '@material-ui/core';
+import {AddShoppingCart} from '@material-ui/icons'
+import useStyles from './styles'
 
 import { commerce } from '../../lib/commerce'
-
-const ProductDetail = ({onAddToCart}) => {
+const ProductDetail = ({onAddToCart,products}) => {
+  const classes = useStyles();
   const [productDetail, setProductDetail] = useState({})
+  const [productRelated, setProductRelated] = useState([])
+  const [categoryProduct, setCategoryProduct] =useState("")
   const { productId } = useParams();
   console.log(productId)
-  
-  console.log("holas")
+ 
 
+  console.log("holas")
+  
+    
+    
+  
+  
   const getProductDetailInfo = async () => {
     try {
+      const allProducts = products
       const product = await commerce.products.retrieve(`${productId}`);
-      setProductDetail(product)
+      setProductRelated(allProducts.filter(productI => {
+        return productI?.categories[0].name.includes(product?.categories[0].name);
+    }))
+      setProductDetail(product)    
 
     } catch (error) {
       console.log(error)
     }
   };
+
+  
+      
+ 
+  
+ 
   console.log(productDetail)
+  console.log(categoryProduct)
+  console.log(productRelated)
 
   useEffect(() => {
-
-
+    
+    
     getProductDetailInfo();
+    
+   
+    
+    
   }, []);
   return (
     <div style={{ paddingTop: "100px" }}>
-      <div style={{
-        
-        
-      
-        display:"flex",
-        
-        flexDirection:"row",
-        flexWrap:"wrap-reverse",
-        justifyContent: "center",
-        marginLeft: "auto",
-        marginRight: "auto",
-        height: "400px",
-        width:" 75%",
-      }}>
-        <div style={{ width: "50% "}} className="imagen">
-          <img  style={{ maxWidth:"100%",
-maxHeight:"100%"}} className="img" src={productDetail.image?.url} />
+      <div className={classes.container}>
+        <div className={classes.imagen}>
+          <img className={classes.img} src={productDetail.image?.url} />
         </div>
-        <div  style={{ width: "50% "}} className="datos">
+        <div className={classes.datos}>
           <h1>{productDetail?.name}</h1>
-          <h2>{productDetail?.categories ? productDetail?.categories[0]?.name : ""}</h2>
+          <h3>{productDetail?.categories? productDetail?.categories[0].name : ""}</h3>
+          <h4>{productDetail?.price?.formatted_with_symbol}</h4>
+          
           <Typography dangerouslySetInnerHTML={{__html:productDetail?.description}} variant="body2" color="textSecondary" />
-          <Button onClick={()=> onAddToCart(productDetail?.id, 1)}>Add to cart</Button>
+         
+          <IconButton aria-label="Add to Cart" onClick={()=> onAddToCart(productDetail?.id, 1)}>
+                 <AddShoppingCart/>
+                </IconButton>
         </div>
       </div>
     </div>

@@ -1,6 +1,14 @@
 import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
+  container:{
+    
+    padding:"15px",
+    
+    
+   display:"flex",
+   flexWrap:"wrap"
+  },
   toolbar: theme.mixins.toolbar,
   title: {
     marginTop: '5%',
@@ -20,10 +28,10 @@ export default makeStyles((theme) => ({
   link: {
     textDecoration: 'none',
   },
-  cardDetails: {
+ /*  cardDetails: {
     display: 'flex',
     marginTop: '10%',
-    width: '100%',
+    width: '60%',
     justifyContent: 'space-between',
-  },
+  }, */
 }));
