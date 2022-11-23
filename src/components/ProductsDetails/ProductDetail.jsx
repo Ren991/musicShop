@@ -11,6 +11,7 @@ const ProductDetail = ({onAddToCart,products}) => {
   const [productDetail, setProductDetail] = useState({})
   const [productRelated, setProductRelated] = useState([])
   const [categoryProduct, setCategoryProduct] =useState("")
+  const [productosRelacionados, setProductosRelacionados]=useState([])
   const { productId } = useParams();
   console.log(productId)
  
@@ -18,17 +19,23 @@ const ProductDetail = ({onAddToCart,products}) => {
   console.log("holas")
   
     
-    
+  
   
   
   const getProductDetailInfo = async () => {
     try {
-      const allProducts = products
+      
       const product = await commerce.products.retrieve(`${productId}`);
-      setProductRelated(allProducts.filter(productI => {
-        return productI?.categories[0].name.includes(product?.categories[0].name);
-    }))
+     if(product && products) {
       setProductDetail(product)    
+      
+      setProductRelated(products.filter(productI => {
+        return productI?.categories[0].name.includes(product?.categories[0].name) && productI?.id !== productId ;
+    }))     
+      
+      
+  }
+      
 
     } catch (error) {
       console.log(error)
@@ -36,13 +43,14 @@ const ProductDetail = ({onAddToCart,products}) => {
   };
 
   
-      
+    
  
   
  
   console.log(productDetail)
   console.log(categoryProduct)
   console.log(productRelated)
+  console.log(productosRelacionados)
 
   useEffect(() => {
     
@@ -52,24 +60,33 @@ const ProductDetail = ({onAddToCart,products}) => {
    
     
     
-  }, []);
+  }, [products]);
   return (
-    <div style={{ paddingTop: "100px" }}>
+    <div style={{ paddingTop: "80px" }}>
       <div className={classes.container}>
         <div className={classes.imagen}>
           <img className={classes.img} src={productDetail.image?.url} />
         </div>
         <div className={classes.datos}>
           <h1>{productDetail?.name}</h1>
-          <h3>{productDetail?.categories? productDetail?.categories[0].name : ""}</h3>
-          <h4>{productDetail?.price?.formatted_with_symbol}</h4>
-          
+          <h2>{productDetail?.categories? productDetail?.categories[0].name : ""}</h2>
+          <h3>{productDetail?.price?.formatted_with_symbol}</h3>
+          <div className={classes.buttonText}>
           <Typography dangerouslySetInnerHTML={{__html:productDetail?.description}} variant="body2" color="textSecondary" />
          
           <IconButton aria-label="Add to Cart" onClick={()=> onAddToCart(productDetail?.id, 1)}>
                  <AddShoppingCart/>
                 </IconButton>
+                </div>
         </div>
+      </div>
+      <div className={classes.containerRelated}>
+      <h2>Products related:</h2>
+      {
+        productRelated?.map((product)=>(
+          <h2>{product?.name}</h2>
+        ))
+      }
       </div>
     </div>
   )

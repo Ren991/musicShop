@@ -13,6 +13,7 @@ const App = () => {
     const [order,setOrder] = useState({});
     const [errorMessage,setErrorMessage]=useState('');
     const [category, setCategory] = useState();
+    const [categories, setCategories] = useState([])
     
  
     console.log(category)
@@ -26,6 +27,10 @@ const App = () => {
         //if ( products === ""){setProducts(data)}
         if (products === "" || products === undefined && category === "" || category === undefined) {
             setProducts(data)
+            let allTheCategories = data.map(a=> a.categories[0].name)
+            setCategories(allTheCategories.filter((element, index) => {
+                return allTheCategories.indexOf(element) === index;
+            }))
         } else {
             setProducts(data.filter(product => {
                 return product.categories[0].name.includes(category);
@@ -36,9 +41,11 @@ const App = () => {
                 setProducts(data)
             }
 
+            
 
         }
         console.log(products)
+       
 
     }
 
@@ -88,57 +95,55 @@ const App = () => {
     }, [category])
     console.log(products)
     console.log(cart)
+    console.log(categories)
     return (
 
         <BrowserRouter>
 
             <div>
 
-                <Navbar totalItems={cart?.total_items} />
+                <Navbar totalItems={cart?.total_items} />               
+                    <Switch>
 
-
-                 
-
-                <Switch>
-
-                    <Route exact path="/">
-                    <select style={{ marginTop: "80px" , width:"20%" }} id="fruits" value={category}
-                    defaultValue="selectOption"
-                    onChange={(e) => setCategory(e.target.value)}>
-                    <option value="selectOption" disabled>Search by category</option>
-                    <option value="allCategories">All Categories</option>
-                    <option value="guitars">Guitars</option>
-                    <option value="bass">Basses</option>
-                    <option value="keyboard">Keyboards</option>
-                </select>
-                        <Products products={products} onAddToCart={handleAddToCart} />
-                    </Route>
-                    <Route exact path="/cart">
-                        <Cart cart={cart}
-                            onUpdateCartQty={handleUpdateCartQty}
-                            onRemoveFromCart={handleRemoveFromCart}
-                            onEmptyCart={handleEmptyCart}
-                        />
-                    </Route>
-                   
-                    <Route exact path="/checkout">
-                        <Checkout 
-                            cart={cart} 
-                            order={order}
-                            onCaptureCheckout={handleCaptureCheckout}  
-                            error={errorMessage}     />
-
-                    </Route>
-                    <Route exact path="/productDetail/:productId" >
-                        <ProductDetail products={products}  onAddToCart={handleAddToCart}  />    
-                    </Route>
-                        
-                        
+                        <Route exact path="/">
+                        <select style={{ marginTop: "80px" , width:"20%" }} id="fruits" value={category}
+                        defaultValue="selectOption"
+                        onChange={(e) => setCategory(e.target.value)}>
+                        <option value="selectOption" disabled>Search by category</option>
+                        <option value="allCategories">All Categories</option>
+                        {categories?.map((cat)=>(
+                            <option value={cat}>{cat}</option>
+                        ))}
                     
+                        </select>
+                            <Products products={products} onAddToCart={handleAddToCart} />
+                        </Route>
+                        <Route exact path="/cart">
+                            <Cart cart={cart}
+                                onUpdateCartQty={handleUpdateCartQty}
+                                onRemoveFromCart={handleRemoveFromCart}
+                                onEmptyCart={handleEmptyCart}
+                            />
+                        </Route>
+                    
+                        <Route exact path="/checkout">
+                            <Checkout 
+                                cart={cart} 
+                                order={order}
+                                onCaptureCheckout={handleCaptureCheckout}  
+                                error={errorMessage}     />
+
+                        </Route>
+                        <Route exact path="/productDetail/:productId" >
+                            <ProductDetail products={products}  onAddToCart={handleAddToCart}  />    
+                        </Route>
+                            
+                            
+                        
 
 
 
-                </Switch>
+                    </Switch>
             </div>
         </BrowserRouter>
 

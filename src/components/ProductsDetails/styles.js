@@ -10,10 +10,14 @@ export default makeStyles((theme)=>({
     marginRight:" auto",
     height:" 400px",
     width:" 75%",
+    borderWidth:"1px",
+    borderColor:"black",
+    borderStyle:"solid",
+    borderRadius:"0.5rem",
   },
   imagen:{
     
-    width:" 30%",
+    width:" 50%",
   },
   img:{
     maxHeight:"100%",
@@ -25,12 +29,26 @@ export default makeStyles((theme)=>({
   },
   [theme.breakpoints.down('sm')]: {
     container: {
-      paddingTop:"105px",
+      paddingTop:"100px",
       flexDirection:"column",
-      height:"300px",
-      width:"100%",
+      height:"400px",
+      width:"80%",
       alignItems:"center"
     },
+    imagen:{
+      marginTop:"25px"
+    },
+    containerRelated:{
+      marginTop:"100px"
+    },
+    datos:{
+      width:"90%"
+    },
+    buttonText:{
+      display:"flex",
+      marginBottom:"100px"
+    },
+
     
   },
     
