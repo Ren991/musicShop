@@ -64,8 +64,9 @@ const ProductDetail = ({onAddToCart,products}) => {
   return (
     <div style={{ paddingTop: "80px" }}>
       <div className={classes.container}>
-        <div className={classes.imagen}>
-          <img className={classes.img} src={productDetail.image?.url} />
+        <div >
+          <img className={classes.img} src={productDetail.image?.url} /> 
+      
         </div>
         <div className={classes.datos}>
           <h1>{productDetail?.name}</h1>

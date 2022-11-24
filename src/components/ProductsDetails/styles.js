@@ -17,7 +17,7 @@ export default makeStyles((theme)=>({
   },
   imagen:{
     
-    width:" 50%",
+    width:" 100%",
   },
   img:{
     maxHeight:"100%",

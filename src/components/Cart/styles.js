@@ -3,11 +3,9 @@ import { makeStyles } from '@material-ui/core/styles';
 export default makeStyles((theme) => ({
   container:{
     
-    padding:"15px",
+    //padding:"15px",
     
-    
-   display:"flex",
-   flexWrap:"wrap"
+   
   },
   toolbar: theme.mixins.toolbar,
   title: {

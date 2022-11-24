@@ -1,5 +1,6 @@
 import React from 'react';
-import { Typography, Button, Card, CardActions, CardContent, CardMedia } from '@material-ui/core';
+import { Typography, Button,Box, Card, CardActions, CardContent, CardMedia,IconButton } from '@material-ui/core';
+
 
 import useStyles from './styles';
 
@@ -11,53 +12,41 @@ const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
   const handleRemoveFromCart = (lineItemId) => onRemoveFromCart(lineItemId);
 
   return (
-    <div className={classes.cartContainer}>
-     
-      <div className={classes.containerImg}>
-        <img src={item?.image.url} alt={item.name} className={classes.media} />
-      </div>
-      <div className={classes.div}>
-        <Typography variant="h5">{item.name}</Typography>
-        <Typography variant="h6">{item.line_total.formatted_with_symbol}</Typography>
-      </div>
-      <div className={classes.cardActions}>
-        <div className={classes.buttons}>
-          <Button type="button" size="small" onClick={() => handleUpdateCartQty(item.id, item.quantity - 1)}>-</Button>
-          <Typography>&nbsp;{item.quantity}&nbsp;</Typography>
-          <Button type="button" size="small" onClick={() => handleUpdateCartQty(item.id, item.quantity + 1)}>+</Button>
+    
+     <div className={classes.container}>
+    
+        <div>
+        
+          <Typography component="div" variant="h5" className={classes.productName}>
+            {item?.name}
+          </Typography>
+          <Typography variant="subtitle1" color="text.secondary" component="div">
+           {item.categories ? item.categories[0].name : ""}
+          </Typography>
         </div>
-        <Button variant="contained" type="button" color="secondary" onClick={() => handleRemoveFromCart(item.id)}>Remove</Button>
+       
+         <div className={classes.butText}>
+          <Button type="button" size="small" onClick={() => handleUpdateCartQty(item.id, item.quantity - 1)}>-</Button>
+          
+          <Typography className={classes.quantity}>&nbsp;{item.quantity}&nbsp;</Typography>
+          
+          
+          <Button type="button" size="small" onClick={() => handleUpdateCartQty(item.id, item.quantity + 1)}>+</Button>
+          
+          
+          <CardMedia
+         component="img"
+         height="250"
+         className={classes.media}
+         image={item.image?.url}
+         alt={item?.name}/>
       </div>
-    </div>
+      </div>
+      
+    
+      
   );
 };
 
 export default CartItem;
 
-/* import React from 'react';
-
-import { Typography,Button,Card,CardActions,CardContent,CardMedia} from '@material-ui/core';
-import useStyles from './styles'
-
-const CartItem =({item,onUpdateCartQty,onRemoveFromCart})=>{
-    const classes= useStyles();
-    return(
-        <Card>
-            <CardMedia image={item?.image.url} alt={item.name} className={classes.media} />
-            <CardContent className={classes.cardContent}>
-                <Typography variant="h4">{item.name}</Typography>
-                <Typography variant="h5">{item?.line_total.formatted_with_symbol}</Typography>
-            </CardContent>
-            <CardActions>
-                <div className={classes.buttons}>
-                    <Button type="button" size="small" onClick={()=> onUpdateCartQty(item.id, item.quantity -1)}> - </Button>
-                    <Typography>{item.quantity}</Typography>
-                    <Button type="button" size="small" onClick={()=> onUpdateCartQty(item.id, item.quantity +1)}>+</Button>
-                </div>
-                <Button variant="contained" type="button" color="secondary" onClick={()=> onRemoveFromCart(item.id)}>Remove</Button>
-            </CardActions>
-
-        </Card>
-    )
-}
-export default CartItem */

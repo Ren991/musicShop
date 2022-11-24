@@ -180,16 +180,16 @@ a.buy-btn:hover , a.buy-btn:active, a.buy-btn:focus{
   .wsk-cp-product .wsk-cp-img{
   top:-40px;
 }
-.wsk-cp-product .wsk-cp-img img{
+/* .wsk-cp-product .wsk-cp-img img{
   box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-}
+} */
   .wsk-cp-product .wsk-cp-text .category > span{
   border-color:#ddd;
   box-shadow: none;
   padding: 11px 28px;
 }
 .wsk-cp-product .wsk-cp-text .category{
-  margin-top: 0px;
+  margin-top: -100px;
 }
 a.buy-btn{
   border-color: #FF9800;
