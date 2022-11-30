@@ -59,7 +59,8 @@ const ProductDetail = ({onAddToCart,products}) => {
     
     getProductDetailInfo();  
     
-  }, [products]);
+  }, [products,productId]);
+ 
   return (
     <div className="container" style={{paddingTop:"75px"}}>
     <div className="blog-card">
