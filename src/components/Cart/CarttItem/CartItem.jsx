@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Button,Box, Card, CardActions, CardContent, CardMedia,IconButton } from '@material-ui/core';
+import { Typography, Button, Box, Card, CardActions, CardContent, CardMedia, IconButton } from '@material-ui/core';
 
 
 import useStyles from './styles';
@@ -12,8 +12,35 @@ const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
   const handleRemoveFromCart = (lineItemId) => onRemoveFromCart(lineItemId);
 
   return (
-    
-     <div className={classes.container}>
+    <div>
+      <div style={{height:"25rem", margin:"10px"}}>
+        <div>
+          <CardMedia
+            component="img"
+            height="200"
+            className={classes.media}
+            image={item.image?.url}
+            alt={item?.name} />
+        </div>
+        <div style={{ width: "15%" }}>
+          <h5>{item?.name}</h5>
+          
+
+          <h3>{item?.price?.formatted_with_symbol}</h3>
+          <div style={{ display: "flex" }}>
+            <Button type="button" size="small" onClick={() => handleUpdateCartQty(item.id, item.quantity - 1)}>-</Button>
+
+            <Typography >&nbsp;{item.quantity}&nbsp;</Typography>
+
+
+            <Button type="button" size="small" onClick={() => handleUpdateCartQty(item.id, item.quantity + 1)}>+</Button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    /*  <div className={classes.container}>
     
         <div>
         
@@ -41,10 +68,10 @@ const CartItem = ({ item, onUpdateCartQty, onRemoveFromCart }) => {
          image={item.image?.url}
          alt={item?.name}/>
       </div>
-      </div>
-      
-    
-      
+      </div> */
+
+
+
   );
 };
 

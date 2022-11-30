@@ -20,7 +20,9 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
 
   const renderCart = () => (
     <>
-      <div className={classes.container} >
+      <div>
+      <Typography className={classes.title} variant="h3" gutterBottom>Your Shopping Cart</Typography>
+        <div style={{display:"flex", flexWrap:"wrap"}} className={classes.container}>
         {cart.line_items.map((lineItem) => (
           <div key={lineItem.id}>
             <CartItem item={lineItem} onUpdateCartQty={onUpdateCartQty} onRemoveFromCart={onRemoveFromCart} />
@@ -34,13 +36,14 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
           <Button className={classes.checkoutButton} component={Link} to="/checkout" size="large" type="button" variant="contained" color="primary">Checkout</Button>
         </div>
       </div>
+      </div>
     </>
   );
 
   return (
     <Container>
       <div className={classes.toolbar} />
-      <Typography className={classes.title} variant="h3" gutterBottom>Your Shopping Cart</Typography>
+      
       { !cart.line_items.length ? renderEmptyCart() : renderCart() }
     </Container>
   );

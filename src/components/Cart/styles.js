@@ -2,14 +2,15 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
   container:{
-    
-    //padding:"15px",
-    
-   
+    margin: "10px",
+  backgroundColor:" #fff",
+  borderRadius: "10px",
+  boxShadow: "0 2px 20px rgba(0, 0, 0, 0.2)",
+  overflow: "hidden"
   },
   toolbar: theme.mixins.toolbar,
   title: {
-    marginTop: '5%',
+    marginTop: '2%',
   },
   emptyButton: {
     minWidth: '150px',

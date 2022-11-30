@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router";
+import { useParams  } from "react-router";
+import { Link as LinkRouter, useHistory } from 'react-router-dom'
 
 import {Card,CardMedia,CardContent,CardActions,Typography,IconButton} from '@material-ui/core';
 import {AddShoppingCart} from '@material-ui/icons'
 import useStyles from './styles'
+import './style.css'
 
 import { commerce } from '../../lib/commerce'
 const ProductDetail = ({onAddToCart,products}) => {
@@ -55,41 +57,69 @@ const ProductDetail = ({onAddToCart,products}) => {
   useEffect(() => {
     
     
-    getProductDetailInfo();
-    
-   
-    
+    getProductDetailInfo();  
     
   }, [products]);
   return (
-    <div style={{ paddingTop: "80px" }}>
-      <div className={classes.container}>
-        <div >
-          <img className={classes.img} src={productDetail.image?.url} /> 
-      
-        </div>
-        <div className={classes.datos}>
-          <h1>{productDetail?.name}</h1>
-          <h2>{productDetail?.categories? productDetail?.categories[0].name : ""}</h2>
-          <h3>{productDetail?.price?.formatted_with_symbol}</h3>
-          <div className={classes.buttonText}>
-          <Typography dangerouslySetInnerHTML={{__html:productDetail?.description}} variant="body2" color="textSecondary" />
-         
-          <IconButton aria-label="Add to Cart" onClick={()=> onAddToCart(productDetail?.id, 1)}>
+    <div className="container" style={{paddingTop:"75px"}}>
+    <div className="blog-card">
+    <div className="meta">
+      <div className="photo" style={{ backgroundImage: `url(${productDetail.image?.url})` }} >
+
+      </div>
+    </div>
+    <div className="description">
+      <h1>{productDetail?.name}</h1>
+      <h2>{productDetail?.categories? productDetail?.categories[0].name : ""}</h2>
+      <Typography dangerouslySetInnerHTML={{__html:productDetail?.description}} variant="body2" color="textSecondary" />
+      <h3>{productDetail?.price?.formatted_with_symbol}</h3>
+      <p className="read-more">
+      <IconButton aria-label="Add to Cart" onClick={()=> onAddToCart(productDetail?.id, 1)}>
                  <AddShoppingCart/>
                 </IconButton>
-                </div>
-        </div>
-      </div>
-      <div className={classes.containerRelated}>
-      <h2>Products related:</h2>
+      </p>
+    </div>
+  </div>
+    <div>
+      <p>Products Related :</p>
+      <div style={{display:"flex",padding:"20px"}}>
       {
         productRelated?.map((product)=>(
-          <h2>{product?.name}</h2>
+          
+            <div style={{width:"250px",padding:"35px",margin:"20px", borderWidth:"1px",borderColor:"black",borderStyle:"solid",borderRadius:"0.5rem"}}>
+              <div>
+              <LinkRouter to={`/productDetail/${product?.id}`} >
+              <CardMedia
+                component="img"
+                height="120"
+                
+                image={product.image?.url}
+                alt={product?.name}/>
+                </LinkRouter>
+                     
+              </div>
+              <div>
+                <h2>{product?.name}</h2>
+              </div>
+              <div>
+              <h4>{product?.price?.formatted_with_symbol}</h4>
+              </div>
+            
+            
+            </div>
+          
         ))
       }
       </div>
     </div>
+  </div>
+  
+   
   )
 }
 export default ProductDetail
+
+ 
+      
+      
+   

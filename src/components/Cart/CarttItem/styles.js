@@ -6,9 +6,10 @@ export default makeStyles((theme) => ({
     display:"flex",
     justifyContent:"center",
     alignItems:"center",
-   width:"800px",
+   
+   height:"25%",
    borderColor:"black",
-   borderkWidth:"2px",
+   borderWidth:"1px",
    borderStyle:"solid",
    marginBottom:"1rem",
    borderRadius:"0.5rem"
@@ -31,24 +32,24 @@ export default makeStyles((theme) => ({
     margin:"2rem",
     display:"flex" */
     marginTop:"10rem",
-    height:"80%",
+    height:"70%",
     
- 
+    
+      
+    
     
     
   }, 
  
-  productName:{
-    width:"15rem"
-  },
+  
   containerMedia:{
     height:"120%"
   },
   
   media: {
 
-    marginLeft:"20%",
-    width:"250px",
+    //marginLeft:"20%",
+    width:"210px",
     height:"150px",
   
     //maxHeight:"100%",
@@ -59,10 +60,18 @@ export default makeStyles((theme) => ({
     display:"flex"
   },
   [theme.breakpoints.down('sm')]: {
-    supr:{
+    container:{
       display:"flex",
       flexDirection:"column",
+      justifyContent:"center",
+      alignItems:"center",
     }, 
+    media:{
+
+    },
+    butText:{
+      flexDirection:"column",
+    },
     cartContainer: {
       paddingTop:"100px",
       
