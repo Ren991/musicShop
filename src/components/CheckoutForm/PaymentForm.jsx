@@ -15,10 +15,10 @@ const PaymentForm = ({ checkoutToken, nextStep, backStep, shippingData, onCaptur
 
     const cardElement = elements.getElement(CardElement);
 
-    const { error  } = await stripe.createPaymentMethod({ type: 'card', card: cardElement });
+    const { error } = await stripe.createPaymentMethod({ type: 'card', card: cardElement });
 
     if (error) {
-      console.log('[error]', error);
+      console.log('');
     } else {
       const orderData = {
         line_items: checkoutToken.line_items,
@@ -41,6 +41,7 @@ const PaymentForm = ({ checkoutToken, nextStep, backStep, shippingData, onCaptur
       onCaptureCheckout(checkoutToken.id, orderData);
 
       nextStep();
+      
     }
   };
 

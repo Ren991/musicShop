@@ -83,11 +83,11 @@ const ProductDetail = ({onAddToCart,products}) => {
   </div>
     <div>
       <p>Products Related :</p>
-      <div style={{display:"flex",padding:"20px"}}>
+      <div className="relatedProduct" style={{display:"flex",padding:"20px"}}>
       {
         productRelated?.map((product)=>(
           
-            <div style={{width:"250px",padding:"35px",margin:"20px", borderWidth:"1px",borderColor:"black",borderStyle:"solid",borderRadius:"0.5rem"}}>
+            <div  style={{width:"250px",padding:"35px",margin:"20px", borderWidth:"1px",borderColor:"black",borderStyle:"solid",borderRadius:"0.5rem"}}>
               <div>
               <LinkRouter to={`/productDetail/${product?.id}`} >
               <CardMedia

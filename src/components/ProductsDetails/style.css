@@ -156,4 +156,15 @@
     .blog-card.alt .details {
         padding-left: 25px;
    }
+   
+}
+
+@media (max-width: 640px) {
+   
+   .relatedProduct{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
 }

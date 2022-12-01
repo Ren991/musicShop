@@ -3,61 +3,34 @@ import { Height } from '@material-ui/icons';
 
 export default makeStyles((theme) => ({
   container:{
-    display:"flex",
-    justifyContent:"center",
-    alignItems:"center",
-   
-   height:"25%",
-   borderColor:"black",
-   borderWidth:"1px",
-   borderStyle:"solid",
-   marginBottom:"1rem",
-   borderRadius:"0.5rem"
-  }, 
-  butText:{
-    display:"flex"
-  },
-  quantity:{
-    marginTop:"58px"
-  },
-  cartContainer:{
-    
-    /* borderWidth:"1px",
-    borderColor:"black",
-    borderStyle:"solid",
+    marginRight:"10px", 
+    width:"100%",
+    height:"60%",
     borderRadius:"0.5rem",
-    backgroundColor:"pink",
+    borderStyle:"solid",
+    borderColor:"black",
+    borderWidth:"1px",
+    justifyContent:"center",alignItems:"center"
     
-    height:"150px",
-    margin:"2rem",
-    display:"flex" */
-    marginTop:"10rem",
-    height:"70%",
-    
-    
-      
-    
-    
-    
+   
+/* -webkit-box-shadow: ;
+-moz-box-shadow: ; */
   }, 
  
   
   containerMedia:{
-    height:"120%"
+    height:"100%"
   },
   
   media: {
 
     //marginLeft:"20%",
-    width:"210px",
+    width:"240px",
     height:"150px",
   
     //maxHeight:"100%",
     //maxWidth:"100%",
     borderRadius:"0.5rem"
-  },
-  buttons:{
-    display:"flex"
   },
   [theme.breakpoints.down('sm')]: {
     container:{
