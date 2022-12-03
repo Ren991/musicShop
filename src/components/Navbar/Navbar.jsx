@@ -1,7 +1,7 @@
 import React from 'react';
-import {Appbar, Toolbar,IconButton,Badge,MenuItem,Menu,Typography, AppBar} from '@material-ui/core';
+import {Appbar, Toolbar,IconButton,Badge,Typography, AppBar} from '@material-ui/core';
 import {ShoppingCart} from '@material-ui/icons'
-import { mergeClasses } from '@material-ui/styles';
+
 import logo from '../../assests/commerce.png';
 import useStyles from './styles'
 import { Link, useLocation } from 'react-router-dom';
@@ -19,7 +19,7 @@ const Navbar =({totalItems})=>{
                 <Toolbar>
                     <Typography component={Link} to="/" variant="h6" className={classes.title} color="inherit">
                         <img src={logo} alt="Commerce.js" height="25px" className={classes.image} />
-                        Commerce.js
+                        Music Shop
                     </Typography>
                     <div className={classes.grow}/>
                     {location.pathname !== '/cart' && location.pathname !== '/checkout' ? ( 

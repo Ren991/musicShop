@@ -11,7 +11,7 @@ const Review = ({ checkoutToken }) => (
         
         <ListItem style={{ padding: '10px 0' }} key={product.name}>
           <ListItemText primary={product.name} secondary={`Quantity: ${product.quantity}`} />
-          <Typography variant="body2">{product.line_total.formatted_with_symbol}</Typography>
+          <Typography key={product.id} variant="body2">{product.line_total.formatted_with_symbol}</Typography>
         </ListItem>
       ))}
       <ListItem style={{ padding: '10px 0' }}>
