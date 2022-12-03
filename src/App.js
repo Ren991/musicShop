@@ -102,8 +102,9 @@ const App = () => {
                 <Switch>
 
                     <Route exact path="/">
+                        
 
-                        <select style={{ marginTop: "80px", width: "20%" }} id="fruits" value={category}
+                        <select style={{ marginLeft:"10%",marginTop: "70px", width: "20%" }} id="fruits" value={category}
                             defaultValue="selectOption"
                             onChange={(e) => setCategory(e.target.value)}>
                             <option value="selectOption" disabled>Search by category</option>

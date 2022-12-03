@@ -25,16 +25,17 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
         <div style={{ display: "flex", flexWrap: "wrap" }} className={classes.container}>
           <Carousel cols={1}
             rows={1}
-            autoplay={2300}>
+            autoplay={200} 
+            mobileBreakpoint={164}>
             {cart.line_items.map((lineItem) => (
 
 
-              <Carousel.Item key={lineItem.id} className={classes.media}>
+              <Carousel.Item key={lineItem.id} >
 
                 {/*  <img width="100%" height={450}
                      src={lineItem.image?.url} /> */}
                 <CardMedia
-
+className={classes.media}
                   component="img"
                   height={350}
 
