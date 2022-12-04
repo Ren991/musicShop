@@ -4,7 +4,7 @@ import { Link as LinkRouter} from 'react-router-dom'
 
 import {CardMedia,Typography,IconButton} from '@material-ui/core';
 import {AddShoppingCart} from '@material-ui/icons'
-import useStyles from './styles'
+//import useStyles from './styles'
 import './style.css'
 
 import { commerce } from '../../lib/commerce'
@@ -12,8 +12,8 @@ const ProductDetail = ({onAddToCart,products}) => {
   
   const [productDetail, setProductDetail] = useState({})
   const [productRelated, setProductRelated] = useState([])
-  const [categoryProduct, setCategoryProduct] =useState("")
-  const [productosRelacionados, setProductosRelacionados]=useState([])
+ // const [categoryProduct, setCategoryProduct] =useState("")
+  //const [productosRelacionados, setProductosRelacionados]=useState([])
   const { productId } = useParams();
   
     
@@ -80,11 +80,11 @@ const ProductDetail = ({onAddToCart,products}) => {
       {
         productRelated?.map((product)=>(
           
-            <div  style={{width:"250px",padding:"35px",margin:"20px", borderWidth:"1px",borderColor:"black",borderStyle:"solid",borderRadius:"0.5rem"}}>
+            <div  key={product.name} style={{width:"250px",padding:"35px",margin:"20px", borderWidth:"1px",borderColor:"black",borderStyle:"solid",borderRadius:"0.5rem"}}>
               <div>
               <LinkRouter to={`/productDetail/${product?.id}`} >
               <CardMedia
-              key={product.id}
+              
                 component="img"
                 height="120"
                 

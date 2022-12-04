@@ -33,6 +33,10 @@ export default makeStyles((theme) => ({
   link: {
     textDecoration: 'none',
   },
+  cardDetails:{
+    marginTop:"60px",
+    width:"40%"
+  }
  /*  cardDetails: {
     display: 'flex',
     marginTop: '10%',

@@ -1,7 +1,7 @@
 import React from 'react';
 import { IconButton } from '@material-ui/core';
 import { AddShoppingCart } from '@material-ui/icons'
-import useStyles from './styles'
+
 import { Link as LinkRouter } from 'react-router-dom'
 
 import './styles.css'

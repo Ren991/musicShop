@@ -3,8 +3,7 @@ import { commerce } from './lib/commerce'
 //import Products from './components/Products/Products'
 //import Navbar from './components/Navbar/Navbar';
 import { Products, Navbar, Cart, Checkout, ProductDetail } from './components';
-import { BrowserRouter, Switch, Route, Navigate, useParams } from 'react-router-dom';
-import { FormControl, TextField } from '@material-ui/core';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 
 const App = () => {
@@ -104,8 +103,8 @@ const App = () => {
                     <Route exact path="/">
                         
 
-                        <select style={{ marginLeft:"10%",marginTop: "70px", width: "20%" }} id="fruits" value={category}
-                            defaultValue="selectOption"
+                        <select style={{ marginLeft:"5%",marginTop: "70px", width: "150px" }} id="fruits" value={category}
+                            /* defaultValue="selectOption" */
                             onChange={(e) => setCategory(e.target.value)}>
                             <option value="selectOption" disabled>Search by category</option>
                             <option value="allCategories">All Categories</option>
