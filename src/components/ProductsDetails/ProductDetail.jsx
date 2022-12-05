@@ -51,6 +51,7 @@ const ProductDetail = ({onAddToCart,products}) => {
     
     
     getProductDetailInfo();  
+    window.scrollTo(0, 0)
     
   }, [products,productId]);
  

@@ -5,19 +5,23 @@ export default makeStyles((theme) => ({
     width:"80%",
     marginLeft:"auto",
     marginRight:"auto",
-    margin: "20px",
+   
+    marginBottom:"20px",
   backgroundColor:" #fff",
   borderRadius: "10px",
   boxShadow: "0 2px 20px rgba(0, 0, 0, 0.2)",
   overflow: "hidden"
   },
+  cardContainer:{
+    width:"100%",
+    margin:"3%",
+    display:"flex"
+  },
   media:{
     width:"40%"
   },
   toolbar: theme.mixins.toolbar,
-  title: {
-    marginTop: '2%',
-  },
+  
   emptyButton: {
     minWidth: '150px',
     [theme.breakpoints.down('xs')]: {
@@ -34,13 +38,41 @@ export default makeStyles((theme) => ({
     textDecoration: 'none',
   },
   cardDetails:{
-    marginTop:"60px",
+    marginTop:"20px",
     width:"40%"
-  }
- /*  cardDetails: {
+  },
+  cardDetails: {
     display: 'flex',
-    marginTop: '10%',
+    marginTop: '2%',
     width: '60%',
+    marginLeft:"auto",
+    marginRight:"auto",
     justifyContent: 'space-between',
-  }, */
+  },
+  [theme.breakpoints.down('sm')]: {
+    cardContainer:{
+      width:"100%",
+      padding:"5px",
+      display:"flex",
+      flexDirection:"column"
+    },
+    container:{
+      width:"100%",
+   
+    },
+    bothButtons:{
+      paddingLeft:"5%"
+    },
+    cardDetails:{
+      display: 'flex',
+      flexDirection:"column",
+      margin:"10%",
+    marginTop: '30%',
+    
+    width: '60%',
+    justifyContent: 'space-between'
+    }
+  
+    
+  },
 }));

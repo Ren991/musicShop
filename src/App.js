@@ -103,7 +103,7 @@ const App = () => {
 
                     <Route exact path="/">
                         
-                    <label style={{ marginLeft:"5%",marginTop: "70px", width: "150px" }} for="category">Filter by category:</label>
+                    <label style={{ marginLeft:"5%",marginTop: "70px", width: "150px" }} >Filter by category:</label>
                         <select id="category" style={{ marginLeft:"1%",marginTop: "70px", width: "150px" }} value={category}
                             /* defaultValue="selectOption" */
                             onChange={(e) => setCategory(e.target.value)}>

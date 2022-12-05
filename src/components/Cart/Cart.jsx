@@ -12,8 +12,10 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
   const handleEmptyCart = () => onEmptyCart();
 
   const renderEmptyCart = () => (
-    <Typography variant="h5" style={{marginTop:"15px"}}>You have no items in your shopping cart,
-      <Link className={classes.link} to="/">start adding some</Link>!
+    <Typography variant="h5" style={{marginTop:"15px"}}>You have no items in your shopping cart
+    &nbsp;&nbsp;
+      <Button className={classes.checkoutButton} component={Link} to="/" size="large" type="button" variant="contained" color="primary"> Start adding some</Button>
+      {/* <Link className={classes.link} to="/"> start adding some</Link>! */}
     </Typography>
   );
 
@@ -22,19 +24,19 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
   const renderCart = () => (
     <>
       <div>
-        <Typography className={classes.title} variant="h4" gutterBottom>Your Shopping Cart</Typography>
-        <div style={{ display: "flex", flexWrap: "wrap" }} className={classes.container}>
+        <Typography style={{marginTop:"1%"}} className={classes.title} variant="h4" gutterBottom >Your Shopping Cart</Typography>
+        <div style={{ display: "flex", flexWrap: "wrap" ,marginTop:"5%"}} className={classes.container}>
        
       {cart.line_items.map((lineItem) => (
-        <Card style={{width:"100%",padding:"10px",margin:"10px",display:"flex"}}>
+        <Card className={classes.cardContainer}>
           <div style={{width:"20%"}}>
             <img style={{width:"100%"}} src={lineItem.image?.url} alt={lineItem.name} />
           </div>
           <div style={{marginLeft:"25%"}}>
            <h2>{lineItem?.name}  - {lineItem?.price?.formatted_with_symbol}</h2>
-                <div style={{ display: "flex" }}>
+                <div className={classes.quantButtons} style={{ display: "flex" }}>
                   <Button type="button" size="small" onClick={() => onUpdateCartQty(lineItem.id, lineItem.quantity - 1)}>-</Button>
-                  <Typography >&nbsp;{lineItem.quantity}&nbsp;</Typography>
+                  <Typography className={classes.quantity}>&nbsp;{lineItem.quantity}&nbsp;</Typography>
                   <Button type="button" size="small" onClick={() => onUpdateCartQty(lineItem.id, lineItem.quantity + 1)}>+</Button>
                   <Button type="button" size="small" onClick={() => onRemoveFromCart(lineItem.id)}>Delete</Button>
                 </div>
@@ -45,10 +47,10 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
     
         </div>
         <div className={classes.cardDetails}>
-          <Typography variant="h5">Subtotal: {cart.subtotal.formatted_with_symbol}</Typography>
-          <div>
-            <Button className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={handleEmptyCart}>Empty cart</Button>
-            <Button className={classes.checkoutButton} component={Link} to="/checkout" size="large" type="button" variant="contained" color="primary">Checkout</Button>
+          <Typography  variant="h5">Subtotal: {cart.subtotal.formatted_with_symbol}</Typography>
+          <div classes={classes.bothButtons}>
+            <Button  className={classes.emptyButton} size="large" type="button" variant="contained" color="secondary" onClick={handleEmptyCart}>Empty cart</Button>
+            <Button   className={classes.checkoutButton} component={Link} to="/checkout" size="large" type="button" variant="contained" color="primary">Checkout</Button>
           </div>
         </div>
       </div>
