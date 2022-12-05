@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams  } from "react-router";
 import { Link as LinkRouter} from 'react-router-dom'
 
-import {CardMedia,Typography,IconButton} from '@material-ui/core';
+import {Card,CardMedia,Typography,IconButton} from '@material-ui/core';
 import {AddShoppingCart} from '@material-ui/icons'
 //import useStyles from './styles'
 import './style.css'
@@ -15,7 +15,7 @@ const ProductDetail = ({onAddToCart,products}) => {
  // const [categoryProduct, setCategoryProduct] =useState("")
   //const [productosRelacionados, setProductosRelacionados]=useState([])
   const { productId } = useParams();
-  
+ 
     
   
   
@@ -41,7 +41,7 @@ const ProductDetail = ({onAddToCart,products}) => {
   };
 
   
-    
+   
  
   
  
@@ -76,11 +76,11 @@ const ProductDetail = ({onAddToCart,products}) => {
   </div>
     <div>
       <p>Products Related :</p>
-      <div className="relatedProduct" style={{display:"flex",padding:"20px"}}>
+      <Card className="relatedProduct" style={{display:"flex",padding:"20px"}}>
       {
         productRelated?.map((product)=>(
           
-            <div  key={product.name} style={{width:"250px",padding:"35px",margin:"20px", borderWidth:"1px",borderColor:"black",borderStyle:"solid",borderRadius:"0.5rem"}}>
+            <Card key={product.name} style={{width:"250px",padding:"35px",margin:"20px", /* borderWidth:"1px",borderColor:"black",borderStyle:"solid", */borderRadius:"0.5rem"}}>
               <div>
               <LinkRouter to={`/productDetail/${product?.id}`} >
               <CardMedia
@@ -101,11 +101,11 @@ const ProductDetail = ({onAddToCart,products}) => {
               </div>
             
             
-            </div>
+            </Card>
           
         ))
       }
-      </div>
+      </Card>
     </div>
   </div>
   

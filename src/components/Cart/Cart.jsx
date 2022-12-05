@@ -1,7 +1,8 @@
 import React from 'react';
-import { Container, Typography, Button, CardMedia } from '@material-ui/core';
+import { Container, Typography, Button, CardMedia, ImageList,ImageListItem,ImageListItemBar, Card } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import Carousel from 'react-grid-carousel'
+
 
 import useStyles from './styles';
 
@@ -23,40 +24,25 @@ const Cart = ({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) => {
       <div>
         <Typography className={classes.title} variant="h4" gutterBottom>Your Shopping Cart</Typography>
         <div style={{ display: "flex", flexWrap: "wrap" }} className={classes.container}>
-          <Carousel cols={1}
-            rows={1}
-             
-            mobileBreakpoint={164}>
-            {cart.line_items.map((lineItem) => (
-
-
-              <Carousel.Item key={lineItem.id} >
-
-                {/*  <img width="100%" height={450}
-                     src={lineItem.image?.url} /> */}
-                <CardMedia
-className={classes.media}
-                  component="img"
-                  height={350}
-
-                  image={lineItem.image?.url}
-                />
-                <h4>{lineItem?.name}  - {lineItem?.price?.formatted_with_symbol}</h4>
+       
+      {cart.line_items.map((lineItem) => (
+        <Card style={{width:"100%",padding:"10px",margin:"10px",display:"flex"}}>
+          <div style={{width:"20%"}}>
+            <img style={{width:"100%"}} src={lineItem.image?.url} alt={lineItem.name} />
+          </div>
+          <div style={{marginLeft:"25%"}}>
+           <h2>{lineItem?.name}  - {lineItem?.price?.formatted_with_symbol}</h2>
                 <div style={{ display: "flex" }}>
                   <Button type="button" size="small" onClick={() => onUpdateCartQty(lineItem.id, lineItem.quantity - 1)}>-</Button>
-
                   <Typography >&nbsp;{lineItem.quantity}&nbsp;</Typography>
-
-
                   <Button type="button" size="small" onClick={() => onUpdateCartQty(lineItem.id, lineItem.quantity + 1)}>+</Button>
                   <Button type="button" size="small" onClick={() => onRemoveFromCart(lineItem.id)}>Delete</Button>
                 </div>
+          </div>      
 
-              </Carousel.Item>
-
-
-            ))}
-          </Carousel>
+        </Card>
+      ))}
+    
         </div>
         <div className={classes.cardDetails}>
           <Typography variant="h5">Subtotal: {cart.subtotal.formatted_with_symbol}</Typography>

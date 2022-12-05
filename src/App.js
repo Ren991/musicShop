@@ -4,6 +4,7 @@ import { commerce } from './lib/commerce'
 //import Navbar from './components/Navbar/Navbar';
 import { Products, Navbar, Cart, Checkout, ProductDetail } from './components';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { Typography } from '@material-ui/core';
 
 
 const App = () => {
@@ -102,11 +103,11 @@ const App = () => {
 
                     <Route exact path="/">
                         
-
-                        <select style={{ marginLeft:"5%",marginTop: "70px", width: "150px" }} id="fruits" value={category}
+                    <label style={{ marginLeft:"5%",marginTop: "70px", width: "150px" }} for="category">Filter by category:</label>
+                        <select id="category" style={{ marginLeft:"1%",marginTop: "70px", width: "150px" }} value={category}
                             /* defaultValue="selectOption" */
                             onChange={(e) => setCategory(e.target.value)}>
-                            <option value="selectOption" disabled>Search by category</option>
+                           
                             <option value="allCategories">All Categories</option>
                             {categories?.map((cat) => (
                                 <option key={cat} value={cat}>{cat}</option>

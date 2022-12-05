@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
   container:{
-    width:"65%",
+    width:"80%",
     marginLeft:"auto",
     marginRight:"auto",
     margin: "20px",
@@ -12,7 +12,7 @@ export default makeStyles((theme) => ({
   overflow: "hidden"
   },
   media:{
-    width:"100%"
+    width:"40%"
   },
   toolbar: theme.mixins.toolbar,
   title: {
