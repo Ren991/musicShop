@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams  } from "react-router";
 import { Link as LinkRouter} from 'react-router-dom'
-
 import {Card,CardMedia,Typography,IconButton} from '@material-ui/core';
 import {AddShoppingCart} from '@material-ui/icons'
-//import useStyles from './styles'
 import './style.css'
 
 import { commerce } from '../../lib/commerce'
@@ -12,8 +10,6 @@ const ProductDetail = ({onAddToCart,products}) => {
   
   const [productDetail, setProductDetail] = useState({})
   const [productRelated, setProductRelated] = useState([])
- // const [categoryProduct, setCategoryProduct] =useState("")
-  //const [productosRelacionados, setProductosRelacionados]=useState([])
   const { productId } = useParams();
  
     
@@ -39,13 +35,6 @@ const ProductDetail = ({onAddToCart,products}) => {
       console.log(error)
     }
   };
-
-  
-   
- 
-  
- 
- 
 
   useEffect(() => {
     

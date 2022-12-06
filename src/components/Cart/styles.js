@@ -37,13 +37,11 @@ export default makeStyles((theme) => ({
   link: {
     textDecoration: 'none',
   },
-  cardDetails:{
-    marginTop:"20px",
-    width:"40%"
-  },
+ 
   cardDetails: {
     display: 'flex',
     marginTop: '2%',
+    marginBottom:"3%",
     width: '60%',
     marginLeft:"auto",
     marginRight:"auto",

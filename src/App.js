@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { commerce } from './lib/commerce'
-//import Products from './components/Products/Products'
-//import Navbar from './components/Navbar/Navbar';
 import { Products, Navbar, Cart, Checkout, ProductDetail } from './components';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Typography } from '@material-ui/core';
-
 
 const App = () => {
     const [products, setProducts] = useState([]);
@@ -16,8 +12,6 @@ const App = () => {
     const [category, setCategory] = useState();
     const [input, setInput] = useState("");
     const [categories, setCategories] = useState([])
-
-
 
     const fetchProducts = async () => {
         const { data } = await commerce.products.list();
@@ -38,12 +32,8 @@ const App = () => {
                 setProducts(data)
             }
 
-
-
         }
         
-
-
     }
 
     const fetchCart = async () => {
@@ -136,12 +126,6 @@ const App = () => {
                     <Route exact path="/productDetail/:productId" >
                         <ProductDetail products={products} onAddToCart={handleAddToCart} />
                     </Route>
-
-
-
-
-
-
                 </Switch>
             </div>
         </BrowserRouter>
